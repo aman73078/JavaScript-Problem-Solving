@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./02problem.js" defer></script>
+    <script src="./exercise02.js" defer></script>
+    <link rel="stylesheet" href="./common.css">
     <title>Document</title>
 </head>
 <body>
@@ -11,5 +12,22 @@
         this is my content
     </div>
     <button onclick="onClick()">Print Window Content</button>
+    <div class="container-multiplication-division" style="margin-top: 30px;">
+        <label for="num1">Input 1st</label>
+        <input type="text" id="num1">
+        <label for="num2">Input 1st</label>
+        <input type="text" id="num2">
+        <div class="" style="margin-top: 5px;">
+            <button class="btn" onclick="multiplicationAndDivision('multiplication')">Multiplication</button>
+            <button class="btn" onclick="multiplicationAndDivision('division')">Division</button>
+        </div>
+        <div class="">
+            <h5 id="result"></h5>
+        </div>
+    </div>
+    <div class="" style="margin-top: 10px; border: 5px solid greenyellow;">
+        <button onclick="getCurrentWebsiteUrl()">Get Current Url</button>
+        <h5 id="currentUrl"></h5>
+    </div>
 </body>
 </html>
