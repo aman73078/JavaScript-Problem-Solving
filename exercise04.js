@@ -53,4 +53,66 @@ const convertTemperature = {
 convertTemperature.celsiusToFahrenheit(60);
 convertTemperature.FahrenheitToCelsius(45);
 
+// 13. Create Variable with User-Defined Name
+//     Write a JavaScript exercise to create a variable using a user-defined name. 
+const createVariable = (funcName)=>{
+    
+    console.log(`User defined variable---> : ${this[funcName]}`);
+}
 
+createVariable();
+
+// 14. Get File Extension of Filename
+//      Write a JavaScript exercise to get the filename extension.  
+function getFileExtension(fileName){
+    try{
+        if(typeof fileName !== 'string' || !fileName.includes('.')){
+            throw new Error(`Please provide a valid filename`)
+        }
+        let extension = fileName.split('.')[1];
+        console.log(`File extension--> : ${extension}`);
+    }catch(error){
+        console.log(`Error : ${error.message || error}`);
+    }
+}
+getFileExtension('document.php');
+getFileExtension('document.csv');
+getFileExtension('document.js');
+getFileExtension('document');
+
+// 15. Difference Between Number and 13
+//      Write a JavaScript program to get the difference between a given number and 13, if the number is 
+//      broader than 13 return double the absolute difference.
+function difference(inputNumber){
+    try{
+        if(typeof inputNumber !== 'number'){
+            throw new Error('Please provide an integer value')
+        };
+        let result = inputNumber <= 13 ? 13-inputNumber : (inputNumber-13)*2;
+        console.log(`Difference between ${inputNumber} and 13 : ${result}`);
+    }catch(error){
+        console.log(`Error : ${error.message || error}`);
+    }
+}
+difference(7);
+difference(23);
+difference('23');
+
+
+// 16. Sum Two Integers (Triple if Equal)
+//      Write a JavaScript program to compute the sum of the two given integers. If the two values are the 
+//      same, then return triple their sum. 
+const sum=(num1,num2)=>{
+    try{
+        if(typeof num1 !== 'number' || typeof num2 !== 'number') throw new Error('Only integer values are allowed');
+        let result = num1 === num2 ? (num1+num2)*3 + ` Yes both numbers are same` : num1 + num2;
+        console.log(`Sum of ${num1} and ${num2} -----> ${result}`);
+    }catch(error){
+        console.log(`Error : ${error.message || error}`);
+    }
+}
+sum(5,6);
+sum(5,5);
+sum(-5,-5);
+sum(-5,5); 
+sum(-5,'5'); 
