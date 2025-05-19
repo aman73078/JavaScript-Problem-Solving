@@ -200,4 +200,8 @@ const convertString2 = function(inputString){
 convertString2('iphone');
 convertString2('microsoft');
 
-
+/* Note:- In Javascript, .substring() is a string method which is used to extract the portion of a string
+            between two specified indices.
+            .substring(startIndex, endIndex);
+            if startIndex > endIndex, Javascript automatically swaps them.
+*/
