@@ -94,3 +94,97 @@ modifyString('harshit');
 modifyString('ha');
 modifyString(333333);
 modifyString('jammukashmir');
+
+/*
+38. Evaluate Grades Based on Total Marks and Final Exam
+    Write a JavaScript program to evaluate a student's total marks across various examinations and determine their grade. The grading criteria are as follows:
+
+    If the total marks fall within the range of 89 to 100 (inclusive), the student receives an A+ grade.
+    If the examination is labeled as "Final-exam," the student will receive an A+ grade only if their total marks are 90 or greater. Assume that final examination means we pass 'true' as second parameter otherwise blank.
+    If the student achieves an A+ grade, the program should return 'true'; otherwise, it should return 'false'.
+*/
+
+const resultOfFinalExam = function(totalMarks,isFinalExamination){
+    try{
+        if(typeof totalMarks !== 'number'){
+            throw new Error('Only numbers are allowed.');
+        };
+        let result;
+        if(isFinalExamination){
+            result = totalMarks > 90;
+        }
+
+        result = ( totalMarks >=89 && totalMarks <=100);
+        console.log(`Result of resultOfFinalExam : ${result}`);
+    }catch(error){
+        console.log(`Error of resultOfFinalExam : ${error.message || error}`);
+    };
+}
+
+resultOfFinalExam(89)
+resultOfFinalExam(93)
+resultOfFinalExam(53)
+
+/* 39. Sum Two Integers and Return Based on Range
+Write a JavaScript program to compute the sum of the two given integers. If the sum is in the range 50..80 return 65 otherwise return 80. */
+
+function returnBasedOnRange(num1,num2){
+    try{
+        if([num1,num2].some(n => typeof n !== 'number')){
+            throw new Error('Only numbers are allowed.');
+        };
+        let sum = num1 + num2;
+        let result = (sum > 50 && sum < 80) ? 65 : 80;
+        console.log(`Result of returnBasedOnRange : ${result}`);
+    }catch(error){
+        console.log(`Error of returnBasedOnRange : ${error.message || error}`);
+    };
+};
+returnBasedOnRange(35,35);
+returnBasedOnRange(35,20);
+returnBasedOnRange(5,70);
+returnBasedOnRange(5,20);
+
+/* 40. Check if Integer is 8 or Difference/Sum Equals 8
+    Write a JavaScript program to check from two given integers whether one of them is 8 or their sum or difference is 8. 
+*/
+function checkTwoIntgers(num1,num2){
+    try{
+        if([num1,num2].some(n => typeof n !== 'number')){
+            throw new Error('Only numbers are allowed.');
+        };
+        let result = [num1,num2].includes(8) || ((num1 + num2) === 8) || (Math.abs(num1 - num2) === 8) ? true : false;
+        console.log(`Result of checkTwoIntegers : ${result}`);
+    }catch(error){
+        console.log(`Error of checkTwoIntegers : ${error.message || error}`);
+    };
+};
+checkTwoIntgers(20,12);
+checkTwoIntgers(20,32);
+checkTwoIntgers(4,4);
+checkTwoIntgers(12,4);
+
+/* 41. Return 30, 40, or 20 Based on Same Numbers
+    Write a JavaScript program to check a set of three numbers; if the three numbers are the same return 30; otherwise return 20; and if two numbers are the same return 40.  */
+const returnNumber =(num1,num2,num3)=>{
+    try{
+        // if([num1,num2,num3].some(n => typeof n !== 'number')){
+        //     throw new Error('Only numbers are allowed.');
+        // };
+        let convertSet = new Set([num1,num2,num3]);
+        let result;
+        if(convertSet.size === 1){
+            result = 30;
+        }else if(convertSet.size === 2){
+            result = 40;
+        }else{
+            result = 20;
+        }
+        console.log(`Result of returnNumber : ${result}`);
+    }catch(error){
+        console.log(`Error of returnNumber : ${error.message || error}`);
+    };
+};
+returnNumber(20,20,20);
+returnNumber(5,20,20);
+returnNumber(5,35,20);
