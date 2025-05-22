@@ -192,3 +192,25 @@ returnNumber(5,35,20);
 /* 42. Check Numbers in Strict or Soft Increasing Mode
         Write a JavaScript program to check whether three given numbers are increasing in strict or in soft mode.  
         Note: Strict mode -> 10, 15, 31 : Soft mode -> 24, 22, 31 or 22, 22, 31 */
+
+function checkStrictSoft(num1,num2,num3){
+    try{
+        if([num1,num2,num3].some(n => typeof n !=='number')){
+            throw new Error('Only numbers are allowed.');
+        };
+        let result;
+        if(num2 > num1 && num3 > num2){
+            result = 'Strict Mode';
+        }else if(num2 >= num1 && num3 >= num2){
+            result = "Soft Mode";
+        }else{
+            result = "Invalid Mode";
+        }
+        console.log(`Result of checkStrictSoft : ${result}`);
+    }catch(error){
+        console.log(`Error of checkStrictSoft : ${error.message || error}`);
+    };
+};
+checkStrictSoft(10,15,31);
+checkStrictSoft(24,22,31);
+checkStrictSoft(22,22,31);
