@@ -141,3 +141,48 @@ const reverseString2 =(inputString)=>{
 };
 reverseString2('rahul kumar');
 reverseString2(32323232);
+
+/* 49. Replace Each Character with Next Alphabet Letter
+        Write a JavaScript program to replace every character in a given string with the character following it in the alphabet.  */
+const replaceNextAlphabetLetter=(inputString)=>{
+    try{
+        if(typeof inputString !=='string'){
+            throw new Error("Only alphabet letters are allowed.");
+        };
+        let alphabetLetters = 'abcdefghijklmnopqrstuvwxyz';
+        let result = '';
+        for(let i=0;i < inputString.length; i++){
+            result += alphabetLetters[alphabetLetters.indexOf(inputString[i])+1];
+        }
+        console.log(`Result of replaceNextAlphabetLetter : ${result.toUpperCase()}`);
+    }catch(error){
+        console.log(`Error of replaceNextAlphabetLetter : ${error.message || error}`);
+    };
+};
+replaceNextAlphabetLetter('rahul');
+replaceNextAlphabetLetter('mango');
+replaceNextAlphabetLetter('pineapple');
+
+/* 50. Capitalize First Letter of Each Word in String
+        Write a JavaScript program to capitalize the first letter of each word in a given string.  */
+function capitalizeFirstLetter(inputString){
+    try{
+        if(typeof inputString !== 'string'){
+            throw new Error('Only alphabetical characters are allowed.');
+        };
+        let clonedString = inputString.split(" ");
+        for(let i = 0; i<clonedString.length;i++){
+            clonedString[i] = clonedString[i][0].toUpperCase() + clonedString[i].substr(1)
+        }
+        let result = clonedString.join(" ")
+        console.log(`Result of capitalizeFirstLetter : ${result}`);
+    }catch(error){
+        console.log(`Error of capitalizeFirstLetter : ${error.message || error}`);
+    };
+};
+capitalizeFirstLetter('this is my string');
+capitalizeFirstLetter('hello guys this is my first day');
+
+
+/* 51. Transform Number to Hours and Minutes
+        Write a JavaScript application that transforms a provided numerical value into hours and minutes.  */
