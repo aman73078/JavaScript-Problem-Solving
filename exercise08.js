@@ -186,3 +186,33 @@ capitalizeFirstLetter('hello guys this is my first day');
 
 /* 51. Transform Number to Hours and Minutes
         Write a JavaScript application that transforms a provided numerical value into hours and minutes.  */
+function convertNumberToHoursMinutes(inputNumber){
+    try{
+        if(typeof inputNumber !== 'number'){
+            throw new Error('Only numbers are allowed.');
+        };
+        console.log(`Result of convertNumberToHourMinutes : ${(inputNumber/120).toFixed(2)} & ${(inputNumber/60).toFixed(2)}`);
+    }catch(error){
+        console.log(`Error of convertNumberToHoursMinutes : ${error.message || error}`);
+    };
+};
+convertNumberToHoursMinutes(5000);
+convertNumberToHoursMinutes(88433);
+convertNumberToHoursMinutes('rahul');
+
+/* 52. Sort Letters Alphabetically in String
+        Write a JavaScript program to convert letters of a given string alphabetically.  */
+function sortInAlphabetically(inputString){
+    try{
+        if(typeof inputString !== 'string'){
+            throw new Error('Only strings are allowed.');
+        };
+        let result = inputString.split("").sort().join("");
+        console.log(`Result of sortInAlpabetically : ${result}`);
+    }catch(error){
+        console.log(`Error of sortInAlphabetically : ${error.message || error}`);
+    };
+};
+sortInAlphabetically('rahul');
+sortInAlphabetically('jaykishan');
+sortInAlphabetically(333333);
