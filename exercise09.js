@@ -252,3 +252,92 @@ moveThreeCharLastToStart(33333);
 
 /* 63. Extract Middle 3 Characters from Odd-Length String
         Write a JavaScript program to create a string using the middle three characters of a given string of odd length. The string length must be greater than or equal to three.  */
+const extractMiddleThreeCharacter=(inputString)=>{
+    try{
+        let error = '';
+        if(typeof inputString !== 'string'){
+            error = `Expected 'inputString' to be string but got ${inputString}`;
+        }else if (inputString.length < 3){
+            error = `Length must be 3 or above but got ${inputString.length}`;
+        }else if(inputString.length%2 !== 1){
+            error = 'String length should be odd.';
+        };
+        if(error) throw new Error(error);
+        let middleIndex = Math.floor(inputString.length/2);
+        let result = inputString.substring(middleIndex-1, middleIndex+2);
+        console.log(`Result of extractMiddleThreeCharacter : ${result}`);
+    }catch(error){
+        console.log(`Error of extractMiddleThreeCharacter : ${error.message || error}`);
+    };
+};
+extractMiddleThreeCharacter('rahul');
+extractMiddleThreeCharacter('kumar');
+extractMiddleThreeCharacter('elephant');
+extractMiddleThreeCharacter(3333333);
+extractMiddleThreeCharacter('ab');
+
+/* 64. Concatenate Strings with Matching Length
+        Write a JavaScript program to concatenate two strings and return the result. If the length of the strings does not match, then remove the characters from the longer string.  */
+const concatMatchingLengthStrings1 = (firstString, secondString) =>{
+    try{
+        if([firstString,secondString].some(n => typeof n !== 'string')){
+            throw new Error(`Only strings are allowed.`);
+        };
+        let result;
+        if(firstString.length !== secondString.length){
+            result = firstString.length > secondString.length ? firstString.substring(0,secondString.length) + secondString : firstString + secondString.substring(0,firstString.length);
+        }else{
+            result = firstString + secondString;
+        };
+        console.log(`Result of concatMatchingLengthStrings1 : ${result}`);
+    }catch(error){
+        console.log(`Error of concatMatchingLengthStrings1 : ${error.message || error}`);
+    };
+};
+concatMatchingLengthStrings1('rahul','mukharji');
+concatMatchingLengthStrings1('Balraj','Singh');
+concatMatchingLengthStrings1('Balraj',333);
+concatMatchingLengthStrings1(4444,333);
+concatMatchingLengthStrings1(4444,333);
+
+
+const concatMatchingLengthStrings2 = (firstString, secondString) =>{
+    try{
+        if([firstString,secondString].some(n => typeof n !== 'string')){
+            throw new Error(`Only strings are allowed.`);
+        };
+        let matchedIndex = Math.min(firstString.length, secondString.length);
+        let result = firstString.substring(firstString.length - matchedIndex) + secondString.substring(secondString.length - matchedIndex);
+        console.log(`Result of concatMatchingLengthStrings2 : ${result}`);
+    }catch(error){
+        console.log(`Error of concatMatchingLengthStrings2 : ${error.message || error}`);
+    };
+};
+concatMatchingLengthStrings2('rahul','mukharji');
+concatMatchingLengthStrings2('Balraj','Singh');
+concatMatchingLengthStrings2('Balraj',333);
+concatMatchingLengthStrings2(4444,333);
+concatMatchingLengthStrings2(4444,333);
+
+/* 65. Check if String Ends with 'Script'
+        Write a JavaScript program to test whether a string ends with "Script". The string length must be greater than or equal to 6.  */
+const checkScriptIncludes =(inputString)=>{
+    try{
+        let error = '';
+        if(typeof inputString !== 'string'){
+            error = `Expected 'inputString' to be string but got ${inputString}`;
+        }else if(inputString.length < 6){
+            error = `String length must be 6 or above.`;
+        };
+        if(error) throw new Error(error);
+        let result = inputString.substring(inputString.length-6,inputString.length) === "Script";
+        console.log(`Result of checkScriptIncludes : ${result}`);
+    }catch(error){
+        console.log(`Error of checkScriptIncludes : ${error.message || error}`);
+    };
+};
+checkScriptIncludes('JavaScript');
+checkScriptIncludes('TypeScript');
+checkScriptIncludes('Python');
+checkScriptIncludes('MySQL');
+checkScriptIncludes(3333333);
