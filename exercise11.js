@@ -156,3 +156,161 @@ checkArrayContains30Or40Twice([30,30]);
 checkArrayContains30Or40Twice([40,40]);
 checkArrayContains30Or40Twice([40,'adsfasd']);
 checkArrayContains30Or40Twice([40,54,98]);
+
+/*  80. Swap First and Last Elements in Array
+        Write a JavaScript program to swap the first and last elements of a given array of integers. The array length should be at least 1.  */
+const swapFirstLastEleOfArray1 = function(list){
+    try{
+        let error = '';
+        if(!Array.isArray(list)){
+            error = "Only array is allowed.";
+        }else if(list.length < 1){
+            error = 'Array length must be 1 or above.';
+        };
+        if(error) throw new Error(error);
+        let firstEle = list[0];
+        let lastEle = list[list.length-1];
+        list[0] = lastEle;
+        list[list.length-1] = firstEle;
+        console.log(`Result of swapFirstLastEleOfArray1 : ${list}`);
+    }catch(error){
+        console.log(`Error of swapFirstLastEleOfArray1 : ${error.message || error}`);
+    };
+};
+swapFirstLastEleOfArray1([1,3,5,9]);
+swapFirstLastEleOfArray1(['kumar',3,5,'rahul']);
+
+const swapFirstLastEleOfArray2 = (list)=>{
+    try{
+        let error = '';
+        if(!Array.isArray(list)){
+            error = "Only array is allowed.";
+        }else if(list.length < 1){
+            error = 'Array length must be 1 or above.';
+        };
+        if(error) throw new Error(error);
+        [list[0],list[list.length - 1]] = [list[list.length - 1], list[0]]
+        console.log(`Result of swapFirstLastEleOfArray2 : ${list}`);
+    }catch(error){
+        console.log(`Error of swapFirstLastEleOfArray2 : ${error.message || error}`);
+    };
+};
+
+swapFirstLastEleOfArray2([31,30,15,90]);
+swapFirstLastEleOfArray2(['Jay',3,5,'Kishan']);
+swapFirstLastEleOfArray2([]);
+swapFirstLastEleOfArray2('asdffasd');
+
+/*  81. Add Two Digits in a Two-Digit Number
+        Write a JavaScript program to add two digits to a given positive integer of length two.  */
+const addTwoDigits1 = function(inputNumber){
+    try{
+        let error = '';
+        if(typeof inputNumber !== 'number'){
+            error = 'Only number is allowed.';
+        }else if(inputNumber < 0){
+            error = "Number must be Positive.";
+        }else if(String(inputNumber).length !== 2){
+            error = 'Give 2 digits number.';
+        }
+        if(error) throw new Error(error);
+        let convertString = String(inputNumber);
+        let result = Number(convertString[0]) + Number(convertString[1]);
+        console.log(`Result of addTwoDigits1 : ${result}`);
+    }catch(error){
+        console.log(`Error of addTwoDigits1 : ${error.message || error}`);
+    };
+};
+addTwoDigits1(33);
+addTwoDigits1(53);
+addTwoDigits1(93);
+
+const addTwoDigits2 = (inputNumber) => {
+    try{
+        let error = '';
+        if(typeof inputNumber !== 'number'){
+            error = 'Only number is allowed.';
+        }else if(inputNumber < 0){
+            error = "Number must be Positive.";
+        }else if(String(inputNumber).length !== 2){
+            error = 'Give 2 digits number.';
+        }
+        if(error) throw new Error(error);
+        let result = inputNumber % 10 + Math.floor(inputNumber/10);
+        console.log(`Result of addTwoDigits2 : ${result}`);
+    }catch(error){
+        console.log(`Error of addTwoDigits2 : ${error.message || error}`);
+    };
+};
+addTwoDigits2(33);
+addTwoDigits2(97);
+addTwoDigits2(23);
+addTwoDigits2('ASDFASD');
+addTwoDigits2(5);
+
+/*  82. Add Two Integers Without Carrying
+        Write a JavaScript program to add two positive integers without carrying.  */
+const addTwoIntegersWithoutCarring =(num1,num2)=>{
+    try{
+        if([num1,num2].some(n => typeof n !== 'number')) throw new Error('Only numbers are allowed.');
+        let result = 0;
+        let x = 1;
+        while(num1 > 0 && num2 > 0){
+            result += x * ((num1 + num2)%10);
+            num1 = Math.floor(num1/10);
+            num2 = Math.floor(num2/10);
+            x *= 10;
+        };
+        console.log(`Result of addTwoIntegersWithoutCarring : ${result}`);
+    }catch(error){
+        console.log(`Error of addTwoIntegersWithoutCarring : ${error.message || error}`); 
+    };
+};
+addTwoIntegersWithoutCarring(922,211);
+addTwoIntegersWithoutCarring(988,244);
+addTwoIntegersWithoutCarring(9988,9244);
+
+/*  83. Find Longest String in Array
+        Write a JavaScript program to find the longest string from a given array of strings.  */
+const findLongestString1 = function(list){
+    try{
+        let error = '';
+        if(!Array.isArray(list)){
+            error = 'Only array is allowed.';
+        }else if(list.some(str => typeof str !== 'string')){
+            error = "Elements of 'list' must be strings.";
+        }
+        if(error) throw new Error(error);
+        let longestString = list[0];
+        for(let ele of list){
+            if(longestString.length < ele.length) longestString = ele;
+        }
+        console.log(`Result of findLongestString1 : ${longestString}`);
+    }catch(error){
+        console.log(`Error of findLongestString1 : ${error.message || error}`);
+    };
+};
+findLongestString1(['rahul','mahesh','Lal Bahadur Shashtri','Indira Gandhi','Hema Malini']);
+findLongestString1(['Mahendran','Suyash','Balram','Yash','kishor']);
+findLongestString1(['Mahendran','Suyash','Balram','Yash',333]);
+
+const findLongestString2 = function(list){
+    try{
+        let error = '';
+        if(!Array.isArray(list)){
+            error = 'Only array is allowed.';
+        }else if(list.some(str => typeof str !== 'string')){
+            error = "Elements of 'list' must be strings.";
+        }
+        if(error) throw new Error(error);
+        let max = list[0].length;
+        list.map(val => max = Math.max(max, val.length));
+        let result = list.filter(val => max== val.length);
+        console.log(`Result of findLongestString2 : ${result}`);
+    }catch(error){
+        console.log(`Error of findLongestString2 : ${error.message || error}`);
+    };
+};
+findLongestString2(['rahul','mahesh','Lal Bahadur Shashtri','Indira Gandhi','Hema Malini']);
+findLongestString2(['Mahendran','Suyash','Balram','Yash','kishor']);
+findLongestString2(['Mahendran','Suyash','Balram','Yash',333]);
