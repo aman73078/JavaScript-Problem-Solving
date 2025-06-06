@@ -161,3 +161,108 @@ findAngle('adfasd');
 
 /*  87. Check if Two Arrays Are Similar with One Swap
         Write a JavaScript program to determine if two arrays of integers of the same length are similar. The arrays will be similar if one array can be obtained from another array by swapping at most one pair of elements.  */
+const findSimilarArray = function(arr1,arr2){
+    try{
+        let error = '';
+        if([arr1,arr2].some(arr => !Array.isArray(arr))){
+            error = 'Only arrays are allowed.';
+        }else if(arr1.length !== arr2.length){
+            error = 'Both arrays length must be same.';
+        }
+        if(error) throw new Error(error);
+        let result = arr1.every((item,index) => item === arr2[index]);
+        console.log(`Result of findSimilarArray : ${result}`);
+    }catch(error){
+        console.log(`Error of findSimilarArray : ${error.message || error}`);
+    };
+};
+findSimilarArray([1,2,3],[1,2,3]);
+findSimilarArray([1,2,39],[1,38,3]);
+findSimilarArray([11,22,39],[11,22,39]);
+findSimilarArray([11,22,39],[11,22]);
+findSimilarArray([11,22,39],'asdfasdf');
+
+/*  89. Replace $ in Expression to Make True
+        Write a JavaScript program to check whether it is possible to replace $ in a given expression x $ y = z with one of the four signs +, -, * or / to obtain a correct expression.  
+        For example x = 10, y = 30 and z = 300, we can replace $ with a multiple operator (*) to obtain x * y = z  */
+const replaceSign1 = (x,y,z) => {
+    try{
+        if(![x,y,z].every(num => typeof num === 'number')) throw new Error('Only numbers are allowed.');
+        let expression = `${x} $ ${y}`;
+        let result = '';
+        if(x * y === z) {
+            result = `${x} * ${y} = ${z}`;
+        }else if(x + y === z){
+            result = `${x} + ${y} = ${z}`;
+        }else if(x + y === z){
+            result = `${x} + ${y} = ${z}`;
+        }else if(x + y === z){
+            result = `${x} + ${y} = ${z}`;
+        };
+        console.log(`Result of replaceSign1 : ${result ? result: 'No result'}`);
+    }catch(error){
+        console.log(`Error of replaceSign1 : ${error.message || error}`);
+    };
+};
+replaceSign1(10,30,300);
+replaceSign1(10,50,500);
+replaceSign1(30,50,500);
+
+
+const replaceSign2 = (x,y,z) => {
+    try{
+        if(![x,y,z].every(num => typeof num === 'number')) throw new Error('Only numbers are allowed.');
+        let expression = `${x} $ ${y}`;
+        let result = x * y === z || x + y === z || x - y === z || x / y === z;
+        console.log(`Result of replaceSign2 : ${result ? result: 'No result'}`);
+    }catch(error){
+        console.log(`Error of replaceSign2 : ${error.message || error}`);
+    };
+};
+replaceSign2(10,30,300);
+replaceSign2(10,50,500);
+replaceSign2(30,50,500);
+
+/*  90. Find kth Greatest Element in Array
+        Write a JavaScript program to find the kth greatest element in a given array of integers.  */
+function findGretestEleOnGivenIndex1(arr,kth){
+    try{
+        let errorMessage = '';
+        if(!Array.isArray(arr)) {
+            errorMessage = "Only arr is allowed.";
+        }else if(!arr.every(n => typeof n === 'number')){
+            errorMessage = 'Element of array must be number.';
+        };
+        if(errorMessage) throw new Error(errorMessage);
+        let result = arr.sort((a,b) => a-b)[kth-1];
+        console.log(`Result of findGretestEleOnGivenIndex1 : ${result}`);
+    }catch(error){
+        console.log(`Error of findGretestEleOnGivenIndex1 : ${error.message || error}`);
+    };
+};
+findGretestEleOnGivenIndex1([2,35,898, 25,98,12],3);
+findGretestEleOnGivenIndex1([2,35,898, 25,98,12],2);
+
+
+// function findGretestEleOnGivenIndex(arr,kth){
+//     try{
+//         let errorMessage = '';
+//         if(!Array.isArray(arr)) {
+//             errorMessage = "Only arr is allowed.";
+//         }else if(!arr.every(n => typeof n === 'number')){
+//             errorMessage = 'Element of array must be number.';
+//         };
+//         if(errorMessage) throw new Error(errorMessage);
+//         let firstEle = arr[0];
+//         let ascendingOrder = [];
+//         for(let i of arr){
+//             if(firstEle < i){
+
+//             }
+//         }
+//     }catch(error){
+//         console.log(`Error of findGretestEleOnGivenIndex : ${error.message || error}`);
+//     };
+// };
+// findGretestEleOnGivenIndex([2,35,898, 25,98,12],3);
+// findGretestEleOnGivenIndex([2,35,898, 25,98,12],2);
