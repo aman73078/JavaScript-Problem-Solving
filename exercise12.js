@@ -244,25 +244,33 @@ findGretestEleOnGivenIndex1([2,35,898, 25,98,12],3);
 findGretestEleOnGivenIndex1([2,35,898, 25,98,12],2);
 
 
-// function findGretestEleOnGivenIndex(arr,kth){
-//     try{
-//         let errorMessage = '';
-//         if(!Array.isArray(arr)) {
-//             errorMessage = "Only arr is allowed.";
-//         }else if(!arr.every(n => typeof n === 'number')){
-//             errorMessage = 'Element of array must be number.';
-//         };
-//         if(errorMessage) throw new Error(errorMessage);
-//         let firstEle = arr[0];
-//         let ascendingOrder = [];
-//         for(let i of arr){
-//             if(firstEle < i){
+function findGretestEleOnGivenIndex2(arr,kth){
+    try{
+        let errorMessage = '';
+        if(!Array.isArray(arr)) {
+            errorMessage = "Only arr is allowed.";
+        }else if(!arr.every(n => typeof n === 'number')){
+            errorMessage = 'Element of array must be number.';
+        };
+        if(errorMessage) throw new Error(errorMessage);
+        
+        for(let i=0;i<kth; i++){
+            let max_index = i;
+            let temp = arr[i];
 
-//             }
-//         }
-//     }catch(error){
-//         console.log(`Error of findGretestEleOnGivenIndex : ${error.message || error}`);
-//     };
-// };
-// findGretestEleOnGivenIndex([2,35,898, 25,98,12],3);
-// findGretestEleOnGivenIndex([2,35,898, 25,98,12],2);
+            for(let j = i+1;j<arr.length; j++){
+                if(arr[j] > arr[max_index]){
+                    max_index = j;
+                }
+            };
+            arr[i] = arr[max_index];
+            arr[max_index] = temp;
+        }
+        let result = arr[kth-1];
+        console.log(`Result of findGretestEleOnGivenIndex2 : ${result}`);
+    }catch(error){
+        console.log(`Error of findGretestEleOnGivenIndex2 : ${error.message || error}`);
+    };
+};
+findGretestEleOnGivenIndex2([2,35,898, 25,98,12],3);
+findGretestEleOnGivenIndex2([2,35,898, 25,98,12],2);
