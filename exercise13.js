@@ -65,7 +65,7 @@ const findMaxDifferenceAmongAllPairs = (arr) => {
         };
         if (error) throw new Error(error);
         let max_difference = 0;
-        for (let i = 0; i < arr.length-1; i++) {
+        for (let i = 0; i < arr.length - 1; i++) {
             let difference = Math.abs(arr[i] - arr[i + 1]);
             if (difference > max_difference) {
                 max_difference = difference;
@@ -149,73 +149,73 @@ const sumOfAbsoluteDifferenceOfConsecutiveNumbers = (arr) => {
             error = "All element of an array must be number.";
         }
         if (error) throw new Error(error);
-        arr = arr.sort((a,b) => a-b);
+        arr = arr.sort((a, b) => a - b);
         let sum = 0;
-        for(let i=0;i<arr.length-1; i++){
-            sum += Math.abs(arr[i] - arr[i+1]);
+        for (let i = 0; i < arr.length - 1; i++) {
+            sum += Math.abs(arr[i] - arr[i + 1]);
         }
         console.log(`Result of sumOfAbsoluteDifferenceOfConsecutiveNumbers : ${sum}`);
     } catch (error) {
         console.log(`Error of sumOfAbsoluteDifferenceOfConsecutiveNumbers : ${error.message || error}`);
     };
 };
-sumOfAbsoluteDifferenceOfConsecutiveNumbers([1,2,3,4,5]);
-sumOfAbsoluteDifferenceOfConsecutiveNumbers([3,1,35,4,15]);
-sumOfAbsoluteDifferenceOfConsecutiveNumbers([3,1,35,4,'asdfda']);
+sumOfAbsoluteDifferenceOfConsecutiveNumbers([1, 2, 3, 4, 5]);
+sumOfAbsoluteDifferenceOfConsecutiveNumbers([3, 1, 35, 4, 15]);
+sumOfAbsoluteDifferenceOfConsecutiveNumbers([3, 1, 35, 4, 'asdfda']);
 sumOfAbsoluteDifferenceOfConsecutiveNumbers("[3,1,35,4,'asdfda']");
 
 /*  97. Shortest String to Convert into Palindrome
         Write a JavaScript program to find the shortest possible string. This can be converted into a string and converted into a palindrome by adding characters to the end of it.  */
-function convertShortestStringIntoPalindrome(arr){
-    try{
-        if(!Array.isArray(arr)) throw new Error("'arr' must be an array.")
-        if(arr.some(str => typeof str !=='string')) throw new Error("Array must be contained only strings.");
+function convertShortestStringIntoPalindrome(arr) {
+    try {
+        if (!Array.isArray(arr)) throw new Error("'arr' must be an array.")
+        if (arr.some(str => typeof str !== 'string')) throw new Error("Array must be contained only strings.");
         let shortest_string = arr[0];
         // let shortest_string_length = 0;
         let shortest_string_length = arr[0].length;
-        for(let i=0;i<arr.length-1;i++){
-            if(arr[i].length < shortest_string_length){
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (arr[i].length < shortest_string_length) {
                 shortest_string_length = arr[i].length;
                 shortest_string = arr[i];
             };
         };
         let resultPalindrome = shortest_string + shortest_string.split('').reverse().join("");
         console.log(`Result of convertShortestStringIntoPalindrome : ${resultPalindrome} : Length : ${shortest_string_length}`);
-    }catch(error){
+    } catch (error) {
         console.log(`Error of convertShortestStringIntoPalindrome : ${error.message || error}`);
     };
 };
-convertShortestStringIntoPalindrome(['rahul','kishor','ant']);
-convertShortestStringIntoPalindrome(['manojkumar','kishor','ant','elephant']);
-convertShortestStringIntoPalindrome(['yashvant','kishor','apple','pineapple','elephant']);
-convertShortestStringIntoPalindrome(['yashvant','kishor','apple','pineapple',3333]);
+convertShortestStringIntoPalindrome(['rahul', 'kishor', 'ant']);
+convertShortestStringIntoPalindrome(['manojkumar', 'kishor', 'ant', 'elephant']);
+convertShortestStringIntoPalindrome(['yashvant', 'kishor', 'apple', 'pineapple', 'elephant']);
+convertShortestStringIntoPalindrome(['yashvant', 'kishor', 'apple', 'pineapple', 3333]);
 convertShortestStringIntoPalindrome("['yashvant','kishor','apple','pineapple',3333]");
 
 /*  98. Change Case Minimally for Upper or Lower Case
         Write a JavaScript program to change the case of the minimum number of letters to make a given string written in upper case or lower case. 
         Fox example "Write" will be write and "PHp" will be "PHP" */
-const changeCaseMinimallyForUpperOrLower =(inputString)=>{
-    try{
+const changeCaseMinimallyForUpperOrLower = (inputString) => {
+    try {
         let errorMessage = '';
-        if(!inputString.length){
+        if (!inputString.length) {
             errorMessage = "You provided empty string.";
         }
-        if(typeof inputString !== 'string'){
+        if (typeof inputString !== 'string') {
             errorMessage = "'inputString must be a string'";
         };
-        if(errorMessage) throw new Error(errorMessage);
+        if (errorMessage) throw new Error(errorMessage);
         let upperCaseCount = 0;
         let lowerCaseCount = 0;
-        for(let i=0; i<inputString.length; i++){
-            if(/[A-Z]/.test(inputString[i])){
+        for (let i = 0; i < inputString.length; i++) {
+            if (/[A-Z]/.test(inputString[i])) {
                 upperCaseCount++;
-            }else{
+            } else {
                 lowerCaseCount++;
             };
         };
         let result = upperCaseCount > lowerCaseCount ? inputString.toUpperCase() : inputString.toLowerCase();
         console.log(`Result of changeCaseMinimallyForUpperOrLower : ${result}`);
-    }catch(error){
+    } catch (error) {
         console.log(`Error of changeCaseMinimallyForUpperOrLower : ${error.message || error}`);
     };
 };
@@ -226,51 +226,81 @@ changeCaseMinimallyForUpperOrLower('');
 
 /*  99. Check if String Can Rearrange to Match Another
         Write a JavaScript program to check whether it is possible to rearrange the characters of a given string. This is in such a way that it will become equal to another given string.  */
-function checkTwoStringEqualAfterRearranging(inputString1,inputString2){
-    try{
+function checkTwoStringEqualAfterRearranging(inputString1, inputString2) {
+    try {
         let errorMessage = '';
-        if([inputString1,inputString2].some(str => typeof str !== 'string')){
-            errorMessage = 'Only strings are allowed.'; 
-        }else if([inputString1,inputString2].some(str => !str.length)){
+        if ([inputString1, inputString2].some(str => typeof str !== 'string')) {
+            errorMessage = 'Only strings are allowed.';
+        } else if ([inputString1, inputString2].some(str => !str.length)) {
             errorMessage = 'Empty strings are not allowed.';
         };
-        if(errorMessage) throw new Error(errorMessage);
-        inputString1 = inputString1.split("").sort((a,b)=> a-b).join("");
-        inputString2 = inputString2.split("").sort((a,b)=> a-b).join("");
+        if (errorMessage) throw new Error(errorMessage);
+        inputString1 = inputString1.split("").sort((a, b) => a - b).join("");
+        inputString2 = inputString2.split("").sort((a, b) => a - b).join("");
         let result = true;
-        for(let i=0;i<Math.max(inputString1.length,inputString2.length);i++){
-            if(inputString1[i] !== inputString2[i]) result = false;
+        for (let i = 0; i < Math.max(inputString1.length, inputString2.length); i++) {
+            if (inputString1[i] !== inputString2[i]) result = false;
         };
         console.log(`Result of checkTwoStringEqualAfterRearranging : ${inputString1}, ${inputString2} :- ${result}`);
-    }catch(error){
-        console.log(`Error of checkTwoStringEqualAfterRearranging : ${error.message || error}`); 
+    } catch (error) {
+        console.log(`Error of checkTwoStringEqualAfterRearranging : ${error.message || error}`);
     };
 };
-checkTwoStringEqualAfterRearranging('kishor','rokish');
-checkTwoStringEqualAfterRearranging('manoj','apple');
-checkTwoStringEqualAfterRearranging(33,'apple');
-checkTwoStringEqualAfterRearranging('gjh','');
+checkTwoStringEqualAfterRearranging('kishor', 'rokish');
+checkTwoStringEqualAfterRearranging('manoj', 'apple');
+checkTwoStringEqualAfterRearranging(33, 'apple');
+checkTwoStringEqualAfterRearranging('gjh', '');
 
 /*  100. Check if Arrays Share at Least One Common Element
          Write a JavaScript program to check if there is at least one element in two given sorted arrays of integers.  */
-const findAtLeastOneCommonEle = function(arr1,arr2){
-    try{
+const findAtLeastOneCommonEle = function (arr1, arr2) {
+    try {
         let errorMessage = '';
-        if([arr1,arr2].some(arr => !Array.isArray(arr))){
+        if ([arr1, arr2].some(arr => !Array.isArray(arr))) {
             errorMessage = 'Only arrays are allowed.';
-        }else if(arr1.some(n => typeof n !== 'number') || arr2.some(n => typeof n !== 'number')){
+        } else if (arr1.some(n => typeof n !== 'number') || arr2.some(n => typeof n !== 'number')) {
             errorMessage = 'All elements of an array must be integer.';
         };
-        if(errorMessage) throw new Error(errorMessage);
+        if (errorMessage) throw new Error(errorMessage);
         let result = false;
-        for(let i=0; i < Math.max(arr1.length, arr2.length);i++) if(arr1.includes(arr2[i])) result = true;
+        for (let i = 0; i < Math.max(arr1.length, arr2.length); i++) if (arr1.includes(arr2[i])) result = true;
         console.log(`Result of findAtLeastOneCommonEle : ${result}`);
-    }catch(error){
+    } catch (error) {
         console.log(`Error of findAtLeastOneCommonEle : ${error.message || error}`);
     };
 };
-findAtLeastOneCommonEle([3,45,23,1],[98,77,32,1,88]);
-findAtLeastOneCommonEle([3,45,23,1],[98,77,32,11,45]);
-findAtLeastOneCommonEle([3,45,23,1],[983,774,322,111,355]);
-findAtLeastOneCommonEle([3,45,23,1],[983,774,322,111,'asdfasd']);
-findAtLeastOneCommonEle([3,45,23,1],"[983,774,322,111,'asdfasd']");
+findAtLeastOneCommonEle([3, 45, 23, 1], [98, 77, 32, 1, 88]);
+findAtLeastOneCommonEle([3, 45, 23, 1], [98, 77, 32, 11, 45]);
+findAtLeastOneCommonEle([3, 45, 23, 1], [983, 774, 322, 111, 355]);
+findAtLeastOneCommonEle([3, 45, 23, 1], [983, 774, 322, 111, 'asdfasd']);
+findAtLeastOneCommonEle([3, 45, 23, 1], "[983,774,322,111,'asdfasd']");
+
+
+/*  101. Check Latin Letters with No Adjacent Upper/Lower Case
+        Write a JavaScript program to check whether a given string contains only Latin letters and no two uppercase and no two lowercase letters are in adjacent positions.  */
+
+function checkLatinLetters(inputString) {
+    try {
+        if (typeof inputString !== 'string') throw new Error("'inputString' must be a string.");
+        if (inputString.length <= 0) throw new Error("Empty string is not allowed.");
+        let upperCaseCount = 0;
+        let lowerCaseCount = 0;
+        let result = true;
+        for (let i = 0; i < inputString.length - 1; i++) {
+            if ((inputString.toUpperCase().includes(inputString[i]) && inputString.toUpperCase().includes(inputString[i + 1])) || (inputString.toLowerCase().includes(inputString[i]) && inputString.toLowerCase().includes(inputString[i + 1]))) {
+                result = false;
+            };
+        };
+        console.log(`Result of checkLatinLetters : ${result}`);
+    } catch (error) {
+        console.log(`Error of checkLatinLetters : ${error.message || error}`);
+    };
+};
+checkLatinLetters('abc');
+checkLatinLetters('aBc');
+checkLatinLetters('aBcDe');
+checkLatinLetters('aBcDE');
+checkLatinLetters('ffGfGe');
+checkLatinLetters('AAbCd');
+checkLatinLetters(3333);
+checkLatinLetters('');
